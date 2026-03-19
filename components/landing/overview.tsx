@@ -227,6 +227,10 @@ export function ProtocolOverview() {
 				<div className="space-y-10">
 					{[
 						{
+							q: "Why Agent Auth?",
+							a: "AI agents are becoming the primary way users interact with services — but there's no standard for how agents identify themselves, request permissions, or get approved by users. Today platforms see agent actions as user actions, with no way to tell who actually did what. Agents get all-or-nothing access through API keys or broad OAuth scopes, and providers have no way to track, limit, or revoke what an agent does independently. Agent Auth fixes this by giving each agent a unique cryptographic identity, letting users approve specific capabilities and revoke them at any time, and providing full traceability of every agent action — all through a single open protocol.",
+						},
+						{
 							q: "Why not use MCP auth?",
 							a: "MCP uses OAuth 2.1 for authentication. OAuth was designed for users authorizing 3rd party applications instead of sharing credentials — it has no concept of per-agent identity, capability-based authorization, or agent lifecycle. When three agents use the same MCP server through OAuth, the server sees one client, not three agents. Agent Auth can sit alongside MCP — services can expose capabilities through MCP tools while using Agent Auth for the identity and authorization layer.",
 						},
