@@ -1,0 +1,29 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "---Get Started---",
+    "introduction",
+    "---Core Concepts---",
+    "servers",
+    "client",
+    "agents",
+    "host",
+    "capabilities",
+    "discovery",
+    "authentication",
+    "approval",
+    "---Build---",
+    "build-server",
+    "integrate-client",
+    "---Clients---",
+    "client-sdk",
+    "mcp",
+    "cli",
+    "---Reference---",
+    "sdks",
+    "security",
+    "errors",
+    "data-model",
+    "privacy"
+  ]
+}
