@@ -1131,78 +1131,6 @@ function derivePhases(messages: Array<{ role: string; parts: unknown }>): PhaseD
 	return { active, completed, discoveredProviders, agentConnections, toolsByPhase };
 }
 
-/* ─── Welcome dialog ─────────────────────────────────────────── */
-
-function WelcomeDialog({ onClose }: { onClose: () => void }) {
-	return (
-		<div className="fixed inset-0 z-100 flex items-end sm:items-center justify-center sm:p-4">
-			<div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={onClose} />
-			<motion.div
-				initial={{ opacity: 0, y: 12, scale: 0.97 }}
-				animate={{ opacity: 1, y: 0, scale: 1 }}
-				transition={{ duration: 0.2 }}
-				className="relative w-full sm:max-w-lg border border-foreground/10 bg-background shadow-xl shadow-foreground/5 z-10 max-h-[85dvh] overflow-y-auto"
-			>
-				<div className="px-4 sm:px-6 pt-5 sm:pt-6 pb-4 sm:pb-5 space-y-3 sm:space-y-4">
-					<div className="flex items-center gap-3">
-						<div className="w-8 h-8 flex items-center justify-center bg-foreground/5 border border-foreground/8 shrink-0">
-							<LightningBoltIcon className="w-4 h-4 text-foreground/50" />
-						</div>
-						<h2 className="text-[16px] sm:text-[17px] font-semibold tracking-[-0.01em]" style={{ fontFamily: "var(--font-display), serif" }}>
-							Before you start
-						</h2>
-					</div>
-
-					<div className="text-[13px] sm:text-[14px] text-foreground/55 leading-[1.7] sm:leading-[1.75] space-y-3" style={{ fontFamily: "var(--font-content), Georgia, serif" }}>
-						<p>
-							This demo connects to the <strong className="text-foreground/75">Agent Auth Directory</strong> — a public directory of services. It currently has two providers:
-						</p>
-						<div className="space-y-2">
-							<div className="flex items-start gap-2.5 sm:gap-3 px-2.5 sm:px-3 py-2 sm:py-2.5 border border-foreground/6 bg-foreground/2">
-								<EnvelopeClosedIcon className="w-4 h-4 text-foreground/30 mt-0.5 shrink-0" />
-								<div className="min-w-0">
-									<p className="text-[13px] font-medium text-foreground/70">Gmail Proxy</p>
-									<p className="text-[12px] sm:text-[12.5px] text-foreground/40 wrap-break-word">
-										<a href="https://gmail.agent-auth.directory" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-foreground/60 transition-colors">gmail.agent-auth.directory</a>
-										{" "}— a Gmail proxy built with Agent Auth Server
-									</p>
-								</div>
-							</div>
-							<div className="flex items-start gap-2.5 sm:gap-3 px-2.5 sm:px-3 py-2 sm:py-2.5 border border-foreground/6 bg-foreground/2">
-								<ExternalLinkIcon className="w-4 h-4 text-foreground/30 mt-0.5 shrink-0" />
-								<div className="min-w-0">
-									<p className="text-[13px] font-medium text-foreground/70">Agent Deploy</p>
-									<p className="text-[12px] sm:text-[12.5px] text-foreground/40 wrap-break-word">
-										<a href="https://deploy.agent-auth.directory" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-foreground/60 transition-colors">deploy.agent-auth.directory</a>
-										{" "}— lets the agent deploy static sites autonomously
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div className="flex items-start gap-2.5 px-2.5 sm:px-3 py-2 sm:py-2.5 border border-amber-500/15 bg-amber-500/5">
-							<ExclamationTriangleIcon className="w-4 h-4 text-amber-500/70 mt-0.5 shrink-0" />
-							<p className="text-[12.5px] sm:text-[13px] text-foreground/55 leading-relaxed">
-								When you try to connect Gmail, you may see a Google warning about the app not being verified — it{"'"}s safe as long as you trust us. The token is only stored on the proxy side. <strong className="text-foreground/75">The agent never sees your token.</strong> You can <a href="https://gmail.agent-auth.directory/dashboard/settings" target="_blank" rel="noopener" className="underline underline-offset-2 text-foreground/70 hover:text-foreground/90 transition-colors">delete your account</a> after you{"'"}re done with the demo.
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-foreground/6 flex justify-end sticky bottom-0 bg-background">
-					<button
-						type="button"
-						onClick={onClose}
-						className="px-5 py-2 bg-foreground text-background text-[13px] font-medium hover:bg-foreground/90 transition-colors cursor-pointer"
-					>
-						Got it
-					</button>
-				</div>
-			</motion.div>
-		</div>
-	);
-}
-
 /* ─── Try with your tools dialog ─────────────────────────────── */
 
 function OpenAIIcon({ className }: { className?: string }) {
@@ -1645,11 +1573,7 @@ export function InteractiveDemo() {
 	const escalationGrantCountRef = useRef<number | null>(null);
 	const seenEscalationIdsRef = useRef(new Set<number>());
 
-	const [showWelcome, setShowWelcome] = useState(false);
 	const [showToolsDialog, setShowToolsDialog] = useState(false);
-	useEffect(() => {
-		if (!sessionStorage.getItem("demo-welcome-dismissed")) setShowWelcome(true);
-	}, []);
 	const [input, setInput] = useState("");
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const [wtPromptIdx, setWtPromptIdx] = useState(0);
@@ -1661,7 +1585,7 @@ export function InteractiveDemo() {
 
 	const [sessionId] = useState(() => typeof crypto !== "undefined" ? crypto.randomUUID() : "fallback");
 	const [transport] = useState(() => new DefaultChatTransport({ api: "/api/demo/chat", body: { sessionId } }));
-	const { messages, status, sendMessage, stop } = useChat({ id: "demo", transport });
+	const { messages, status, error, sendMessage, stop } = useChat({ id: "demo", transport });
 
 	const isStreaming = status === "streaming" || status === "submitted";
 	const isGuided = wtPromptIdx < WALKTHROUGH_PROMPTS.length;
@@ -1933,16 +1857,8 @@ export function InteractiveDemo() {
 		setInput("");
 	}, [input, isStreaming, isFirstPrompt, sendMessage]);
 
-	const dismissWelcome = useCallback(() => {
-		setShowWelcome(false);
-		sessionStorage.setItem("demo-welcome-dismissed", "1");
-	}, []);
-
 	return (
 		<div className="flex flex-col h-full">
-			<AnimatePresence>
-				{showWelcome && <WelcomeDialog onClose={dismissWelcome} />}
-			</AnimatePresence>
 			<AnimatePresence>
 				{showToolsDialog && <TryWithToolsDialog onClose={() => setShowToolsDialog(false)} />}
 			</AnimatePresence>
@@ -2014,8 +1930,20 @@ export function InteractiveDemo() {
 								<div ref={messagesEndRef} />
 							</div>
 
-							<div className="border-t border-foreground/8">
-							{currentPrompt && !isFirstPrompt && !isStreaming && !awaitingApproval && (
+						<div className="border-t border-foreground/8">
+						{error && !isStreaming && (
+							<div className="px-3 sm:px-5 py-2.5 flex items-center gap-2 border-b border-red-500/15 bg-red-500/5">
+								<ExclamationTriangleIcon className="w-3.5 h-3.5 text-red-500 shrink-0" />
+								<span className="text-[12px] sm:text-[13px] text-red-600 dark:text-red-400 flex-1">
+									{error.message?.includes("429") || error.message?.includes("Too many")
+										? "Too many requests — please wait a moment and try again."
+										: error.message?.includes("daily") || error.message?.includes("budget")
+											? "The demo has reached its daily usage limit. Please try again tomorrow."
+											: error.message || "Something went wrong. Please try again."}
+								</span>
+							</div>
+						)}
+						{currentPrompt && !isFirstPrompt && !isStreaming && !awaitingApproval && (
 								<button
 									type="button"
 									onClick={sendSuggestion}

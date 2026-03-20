@@ -17,16 +17,6 @@ export const chatRateLimit = new Ratelimit({
   prefix: "aap:demo:chat",
 });
 
-/**
- * Daily budget cap across all users: 500 requests/day.
- * Acts as a cost circuit breaker for the OpenRouter API key.
- */
-export const dailyBudgetLimit = new Ratelimit({
-  redis,
-  limiter: Ratelimit.fixedWindow(500, "1 d"),
-  analytics: true,
-  prefix: "aap:demo:daily",
-});
 
 export function getClientIp(req: Request): string {
   return (

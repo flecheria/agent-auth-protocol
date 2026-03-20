@@ -15,7 +15,6 @@ import {
 import { getOrCreateSession, type DemoSession } from "@/lib/demo/sessions";
 import {
   chatRateLimit,
-  dailyBudgetLimit,
   getClientIp,
 } from "@/lib/demo/rate-limit";
 
@@ -305,10 +304,7 @@ function buildTools(session: DemoSession) {
 export async function POST(req: Request) {
   const ip = getClientIp(req);
 
-  const [perUser, global] = await Promise.all([
-    chatRateLimit.limit(ip),
-    dailyBudgetLimit.limit("global"),
-  ]);
+  const perUser = await chatRateLimit.limit(ip);
 
   if (!perUser.success) {
     return Response.json(
@@ -321,13 +317,6 @@ export async function POST(req: Request) {
           "X-RateLimit-Remaining": String(perUser.remaining),
         },
       },
-    );
-  }
-
-  if (!global.success) {
-    return Response.json(
-      { error: "The demo has reached its daily usage limit. Please try again tomorrow." },
-      { status: 429 },
     );
   }
 
