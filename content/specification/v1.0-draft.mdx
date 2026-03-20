@@ -19,7 +19,7 @@ AI agents are becoming long-lived actors: copilots, background workers, schedule
 
 1. Agents acting on behalf of a user (Delegated agents)
 
-When an agent acts on behalf of a user, it typically reuses the user's OAuth token or a shared client credential. That collapses the runtime agent into someone else's identity:
+When an agent acts on behalf of a user, it typically inherits the identity of the application or the user — operating under existing OAuth client credentials or delegated tokens with no way to identify the agent as a separate principal. That collapses the runtime agent into someone else's identity.
 
 - **No visibility.** The server can't tell which agent made a request. There's no audit trail per agent — every call looks like it came from the same OAuth client.
 - **No scoping.** You can't scope each agent separately. Every agent sharing the same credential gets the same permissions. You can't give one agent read-only access and another write access, or constrain a specific agent to a narrower set of capabilities for a limited time.
