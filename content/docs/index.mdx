@@ -10,7 +10,7 @@ Agent Auth is an open protocol that gives AI agents their own identity — disti
 AI agents are becoming long-lived actors: copilots, background workers, scheduled automations, and multi-step systems that call external services. Today's auth models were not designed with this in mind.
 
 - **No visibility** — servers can't tell which agent made a request
-- **No scoping** — every agent gets the user's full permissions
+- **No scoping** — you can't scope each agent separately, so every agent sharing a credential gets the same permissions
 - **No isolation** — revoking one agent means revoking all of them
 - **No autonomous identity** — agents without a human in the loop have no way to register or authenticate
 
