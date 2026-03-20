@@ -8,6 +8,7 @@ import {
   EB_Garamond,
 } from "next/font/google";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import {
   AISearch,
@@ -91,6 +92,7 @@ export default function RootLayout({
             }}
           />
         </RootProvider>
+        <Analytics />
       </body>
     </html>
   );
