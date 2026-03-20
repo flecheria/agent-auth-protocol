@@ -2,7 +2,12 @@
 
 import { motion } from "motion/react";
 import { DocumentIcon } from "@/components/icons";
-import { GlobeIcon, PlayIcon, ReaderIcon } from "@radix-ui/react-icons";
+import {
+	GlobeIcon,
+	PlayIcon,
+	ReaderIcon,
+	PersonIcon,
+} from "@radix-ui/react-icons";
 
 export function LandingHero() {
 	return (
@@ -77,6 +82,18 @@ export function LandingHero() {
 					>
 						<GlobeIcon className="w-3.5 h-3.5" />
 						Directory
+					</a>
+					<span className="text-foreground/20 select-none font-light">
+						/
+					</span>
+					<a
+						href="https://discord.gg/GYC3W7tZzb"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-foreground/50 hover:text-foreground transition-colors"
+					>
+						<PersonIcon className="w-3.5 h-3.5" />
+						Community
 					</a>
 				</motion.div>
 				<motion.div
