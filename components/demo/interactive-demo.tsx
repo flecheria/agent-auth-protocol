@@ -1926,7 +1926,7 @@ export function InteractiveDemo() {
 		if (isFirstPrompt) {
 			const recommended = WALKTHROUGH_PROMPTS[0].prompt ?? "";
 			const usedRecommended = input.trim() === recommended.trim();
-			setWtPromptIdx(usedRecommended ? 1 : 2);
+			setWtPromptIdx(usedRecommended ? 1 : WALKTHROUGH_PROMPTS.length);
 			usedGuidedFirstRef.current = usedRecommended;
 		}
 		sendMessage({ text: input });
