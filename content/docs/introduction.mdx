@@ -4,7 +4,7 @@ description: Agent Auth is an open protocol that gives AI agents their own ident
 section: "Get started"
 ---
 
-Agent Auth is an open protocol that gives AI agents their own identity. Instead of borrowing a user's OAuth token or sharing a single API key, each agent gets its own cryptographic keypair, its own granted capabilities, and its own lifecycle.
+Agent Auth is an open protocol that gives AI agents their own identity. Instead of inheriting the identity of the application or the user, each agent gets its own cryptographic keypair, its own granted capabilities, and its own lifecycle.
 
 Using Agent Auth, AI applications like Claude, ChatGPT, or Cursor can connect to external services — banks, APIs, deployment pipelines, communication tools — and perform tasks with **clear attribution and scoped permissions**.
 
@@ -16,7 +16,7 @@ They range from ephemeral one-shot tasks to long-running background workers and 
 
 ### Delegated agents
 
-When an agent acts on behalf of a user, it typically reuses the user's OAuth token or a shared client credential. That collapses the agent into the user's identity:
+When an agent acts on behalf of a user, it typically inherits the identity of the application or the user — operating under existing credentials with no way to identify the agent as a separate principal. That collapses the agent into someone else's identity:
 
 - **No visibility** — the server can't tell which agent made a request
 - **No scoping** — you can't scope each agent separately, so every agent sharing a credential gets the same permissions
