@@ -1931,18 +1931,21 @@ export function InteractiveDemo() {
 							</div>
 
 						<div className="border-t border-foreground/8">
-						{error && !isStreaming && (
-							<div className="px-3 sm:px-5 py-2.5 flex items-center gap-2 border-b border-red-500/15 bg-red-500/5">
-								<ExclamationTriangleIcon className="w-3.5 h-3.5 text-red-500 shrink-0" />
-								<span className="text-[12px] sm:text-[13px] text-red-600 dark:text-red-400 flex-1">
-									{error.message?.includes("429") || error.message?.includes("Too many")
-										? "Too many requests — please wait a moment and try again."
-										: error.message?.includes("daily") || error.message?.includes("budget")
-											? "The demo has reached its daily usage limit. Please try again tomorrow."
-											: error.message || "Something went wrong. Please try again."}
-								</span>
-							</div>
-						)}
+						{error && !isStreaming && (() => {
+							let msg = "Something went wrong. Please try again.";
+							try {
+								const parsed = JSON.parse(error.message);
+								if (typeof parsed?.error === "string") msg = parsed.error;
+							} catch {
+								if (error.message) msg = error.message;
+							}
+							return (
+								<div className="px-3 sm:px-5 py-2.5 flex items-center gap-2 border-b border-red-500/15 bg-red-500/5">
+									<ExclamationTriangleIcon className="w-3.5 h-3.5 text-red-500 shrink-0" />
+									<span className="text-[12px] sm:text-[13px] text-red-600 dark:text-red-400 flex-1">{msg}</span>
+								</div>
+							);
+						})()}
 						{currentPrompt && !isFirstPrompt && !isStreaming && !awaitingApproval && (
 								<button
 									type="button"
