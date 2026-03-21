@@ -118,7 +118,7 @@ function PromptBlock({
 				<ChevronRight className="w-4 h-4 text-foreground/25 shrink-0 mt-0.5" />
 				<p
 					className="text-[15px] text-foreground/70 leading-relaxed flex-1"
-					style={{ fontFamily: "var(--font-content), Georgia, serif" }}
+					style={{ fontFamily: "var(--font-sans), sans-serif" }}
 				>
 					{prompt}
 				</p>
@@ -252,13 +252,13 @@ export function DemoGuide() {
 			<div className="mb-10">
 				<h1
 					className="text-2xl sm:text-3xl tracking-[-0.02em] font-semibold mb-4"
-					style={{ fontFamily: "var(--font-display), serif" }}
+					style={{ fontFamily: "var(--font-sans), sans-serif" }}
 				>
 					Try Agent Auth
 				</h1>
 				<p
 					className="text-[17px] sm:text-[18px] text-foreground/65 leading-[1.8] max-w-2xl"
-					style={{ fontFamily: "var(--font-content), Georgia, serif" }}
+					style={{ fontFamily: "var(--font-sans), sans-serif" }}
 				>
 					Through this demo, you'll use an Agent Auth proxy server for{" "}
 					<span className="inline-flex items-start gap-1 mx-1">
@@ -279,7 +279,7 @@ export function DemoGuide() {
 						<StepNumber n={1} active={currentStep >= 1} />
 						<h2
 							className="text-lg font-medium tracking-tight"
-							style={{ fontFamily: "var(--font-display), serif" }}
+							style={{ fontFamily: "var(--font-sans), sans-serif" }}
 						>
 							Choose your agent
 						</h2>
@@ -287,7 +287,7 @@ export function DemoGuide() {
 
 					<p
 						className="text-[15px] text-foreground/55 leading-relaxed mb-5 ml-9"
-						style={{ fontFamily: "var(--font-content), Georgia, serif" }}
+						style={{ fontFamily: "var(--font-sans), sans-serif" }}
 					>
 						Pick the AI agent you want to integrate with. Hosted agents
 						connect through a remote MCP server; local agents connect
@@ -347,7 +347,7 @@ export function DemoGuide() {
 								<h2
 									className="text-lg font-medium tracking-tight"
 									style={{
-										fontFamily: "var(--font-display), serif",
+										fontFamily: "var(--font-sans), sans-serif",
 									}}
 								>
 									{instructions.title}
@@ -359,7 +359,7 @@ export function DemoGuide() {
 									className="text-[15px] text-foreground/55 leading-relaxed"
 									style={{
 										fontFamily:
-											"var(--font-content), Georgia, serif",
+											"var(--font-sans), sans-serif",
 									}}
 								>
 									{instructions.description}
@@ -377,7 +377,7 @@ export function DemoGuide() {
 											<span
 												style={{
 													fontFamily:
-														"var(--font-content), Georgia, serif",
+														"var(--font-sans), sans-serif",
 												}}
 											>
 												{step}
@@ -425,7 +425,7 @@ export function DemoGuide() {
 								<h2
 									className="text-lg font-medium tracking-tight"
 									style={{
-										fontFamily: "var(--font-display), serif",
+										fontFamily: "var(--font-sans), sans-serif",
 									}}
 								>
 									Read your emails
@@ -437,7 +437,7 @@ export function DemoGuide() {
 									className="text-[15px] text-foreground/55 leading-relaxed"
 									style={{
 										fontFamily:
-											"var(--font-content), Georgia, serif",
+											"var(--font-sans), sans-serif",
 									}}
 								>
 									Send the following prompt to your agent. This
@@ -474,7 +474,7 @@ export function DemoGuide() {
 													className="text-[14px] text-foreground/50 leading-relaxed"
 													style={{
 														fontFamily:
-															"var(--font-content), Georgia, serif",
+															"var(--font-sans), sans-serif",
 													}}
 												>
 													{step}
@@ -513,7 +513,7 @@ export function DemoGuide() {
 								<h2
 									className="text-lg font-medium tracking-tight"
 									style={{
-										fontFamily: "var(--font-display), serif",
+										fontFamily: "var(--font-sans), sans-serif",
 									}}
 								>
 									Capability escalation
@@ -525,7 +525,7 @@ export function DemoGuide() {
 									className="text-[15px] text-foreground/55 leading-relaxed"
 									style={{
 										fontFamily:
-											"var(--font-content), Georgia, serif",
+											"var(--font-sans), sans-serif",
 									}}
 								>
 									Now ask the agent to do something it doesn{"'"}t
@@ -563,7 +563,7 @@ export function DemoGuide() {
 													className="text-[14px] text-foreground/50 leading-relaxed"
 													style={{
 														fontFamily:
-															"var(--font-content), Georgia, serif",
+															"var(--font-sans), sans-serif",
 													}}
 												>
 													{step}
@@ -593,7 +593,7 @@ export function DemoGuide() {
 								<h2
 									className="text-lg font-medium tracking-tight mb-4"
 									style={{
-										fontFamily: "var(--font-display), serif",
+										fontFamily: "var(--font-sans), sans-serif",
 									}}
 								>
 									What you just saw
@@ -602,7 +602,7 @@ export function DemoGuide() {
 									className="text-[15.5px] text-foreground/55 leading-[1.85] space-y-4"
 									style={{
 										fontFamily:
-											"var(--font-content), Georgia, serif",
+											"var(--font-sans), sans-serif",
 									}}
 								>
 									<p>

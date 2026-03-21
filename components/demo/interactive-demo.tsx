@@ -158,30 +158,30 @@ function ToolCallDialog({ tool, onClose }: { tool: PhaseToolCall; onClose: () =>
 				className="relative w-full sm:max-w-lg border border-foreground/10 bg-background shadow-xl shadow-foreground/5 z-10 max-h-[85dvh] flex flex-col"
 			>
 				<div className="flex items-center gap-2.5 px-4 py-3 border-b border-foreground/8 shrink-0">
-					<Icon className="w-3.5 h-3.5 text-foreground/30" />
-					<span className="text-[13px] font-medium text-foreground/70 flex-1">{label}</span>
-				<span className={`text-[10px] font-mono uppercase tracking-[0.1em] px-1.5 py-0.5 ${hasError ? "text-red-600 dark:text-red-400 bg-red-500/10 border border-red-500/20" : tool.state === "running" ? "text-foreground/35 bg-foreground/3 border border-foreground/8 tool-running" : "text-emerald-600/70 dark:text-emerald-400/70 bg-emerald-500/5 border border-emerald-500/12"}`}>
+					<Icon className="w-3.5 h-3.5 text-foreground/45" />
+					<span className="text-[13px] font-medium text-foreground/80 flex-1">{label}</span>
+				<span className={`text-[10px] font-mono uppercase tracking-[0.1em] px-1.5 py-0.5 ${hasError ? "text-red-600 dark:text-red-400 bg-red-500/10 border border-red-500/20" : tool.state === "running" ? "text-foreground/50 bg-foreground/3 border border-foreground/10 tool-running" : "text-emerald-600/80 dark:text-emerald-400/80 bg-emerald-500/5 border border-emerald-500/15"}`}>
 					{tool.state === "running" ? "running" : hasError ? "error" : "done"}
 				</span>
-					<button type="button" onClick={onClose} className="p-1 text-foreground/30 hover:text-foreground/60 transition-colors cursor-pointer">
+					<button type="button" onClick={onClose} className="p-1 text-foreground/40 hover:text-foreground/70 transition-colors cursor-pointer">
 						<Cross2Icon className="w-3.5 h-3.5" />
 					</button>
 				</div>
 				<div className="overflow-y-auto p-4 space-y-3">
 					{tool.input != null && (
 						<div>
-							<span className="text-[10px] font-mono uppercase tracking-[0.12em] text-foreground/30 block mb-1.5">Input</span>
-						<pre className="text-[12px] font-mono text-foreground/50 whitespace-pre-wrap break-all leading-relaxed p-3 bg-foreground/2 border border-foreground/6 max-h-[200px] overflow-y-auto">{formatJson(tool.input, false)}</pre>
+							<span className="text-[10px] font-mono uppercase tracking-[0.12em] text-foreground/45 block mb-1.5">Input</span>
+						<pre className="text-[12px] font-mono text-foreground/65 whitespace-pre-wrap break-all leading-relaxed p-3 bg-foreground/2 border border-foreground/6 max-h-[200px] overflow-y-auto">{formatJson(tool.input, false)}</pre>
 					</div>
 				)}
 				{tool.output != null && (
 					<div>
-						<span className="text-[10px] font-mono uppercase tracking-[0.12em] text-foreground/30 block mb-1.5">Output</span>
-						<pre className={`text-[12px] font-mono whitespace-pre-wrap break-all leading-relaxed p-3 border max-h-[280px] overflow-y-auto ${hasError ? "text-red-600 dark:text-red-400 bg-red-500/5 border-red-500/15" : "text-foreground/50 bg-foreground/2 border-foreground/6"}`}>{formatJson(tool.output, false)}</pre>
+						<span className="text-[10px] font-mono uppercase tracking-[0.12em] text-foreground/45 block mb-1.5">Output</span>
+						<pre className={`text-[12px] font-mono whitespace-pre-wrap break-all leading-relaxed p-3 border max-h-[280px] overflow-y-auto ${hasError ? "text-red-600 dark:text-red-400 bg-red-500/5 border-red-500/15" : "text-foreground/65 bg-foreground/2 border-foreground/6"}`}>{formatJson(tool.output, false)}</pre>
 						</div>
 					)}
 				{tool.state === "running" && (
-					<div className="flex items-center gap-2 py-3 justify-center text-foreground/30 tool-running">
+					<div className="flex items-center gap-2 py-3 justify-center text-foreground/45 tool-running">
 						<span className="text-[12px] font-mono">Running…</span>
 					</div>
 				)}
@@ -226,14 +226,14 @@ function ProtocolProgressBar({
 							) : (
 								<CheckIcon className="w-2.5 h-2.5 text-emerald-500/60 shrink-0" />
 							)}
-							<span className={`text-[11px] font-mono whitespace-nowrap ${isLatest ? "text-foreground/50" : "text-foreground/25"}`}>
+							<span className={`text-[11px] font-mono whitespace-nowrap ${isLatest ? "text-foreground/65" : "text-foreground/40"}`}>
 								{phase.title}
 							</span>
 						</div>
 					);
 				})}
 			</div>
-			<ChevronRightIcon className="w-3 h-3 text-foreground/20 shrink-0 ml-auto" />
+			<ChevronRightIcon className="w-3 h-3 text-foreground/35 shrink-0 ml-auto" />
 		</button>
 	);
 }
@@ -250,7 +250,7 @@ function AgentIdBadge({ connections }: { connections: AgentConnection[] }) {
 			<button
 				type="button"
 				onClick={() => setOpen(!open)}
-				className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono text-foreground/40 hover:text-foreground/60 border border-foreground/8 hover:border-foreground/15 bg-foreground/2 hover:bg-foreground/4 transition-all cursor-pointer"
+				className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono text-foreground/55 hover:text-foreground/70 border border-foreground/10 hover:border-foreground/20 bg-foreground/2 hover:bg-foreground/4 transition-all cursor-pointer"
 			>
 				<IdCardIcon className="w-3.5 h-3.5" />
 				<span className="truncate max-w-[120px]">{connections[0].agentId.slice(0, 12)}…</span>
@@ -276,7 +276,7 @@ function AgentIdBadge({ connections }: { connections: AgentConnection[] }) {
 										<Cross2Icon className="w-3 h-3" />
 									</button>
 								</div>
-								<p className="text-[12.5px] text-foreground/50 leading-[1.7]" style={{ fontFamily: "var(--font-content), Georgia, serif" }}>
+								<p className="text-[12.5px] text-foreground/50 leading-[1.7]" style={{ fontFamily: "var(--font-sans), sans-serif" }}>
 									An <strong className="text-foreground/70">Agent ID</strong> is a unique identifier assigned to the agent when it registers with a provider. It{"'"}s tied to the agent{"'"}s <strong className="text-foreground/70">Ed25519 keypair</strong> and used to sign every request — so the provider can verify who{"'"}s calling, what they{"'"}re allowed to do, and trace every action back to this identity.
 								</p>
 								<div className="space-y-1.5">
@@ -372,15 +372,15 @@ function Sidebar({
 					</button>
 
 					<div className="flex items-center gap-2">
-						<ReaderIcon className="w-3.5 h-3.5 text-foreground/25" />
-						<span className="text-[10px] font-mono uppercase tracking-[0.14em] text-foreground/35">
+						<ReaderIcon className="w-3.5 h-3.5 text-foreground/45" />
+						<span className="text-[10px] font-mono uppercase tracking-[0.14em] text-foreground/50">
 							What{"'"}s happening
 						</span>
 					</div>
 
 					{visiblePhases.length === 0 && (
 						<div className="py-6 text-center">
-							<p className="text-[12.5px] text-foreground/20" style={{ fontFamily: "var(--font-content), Georgia, serif" }}>
+							<p className="text-[12.5px] text-foreground/40" style={{ fontFamily: "var(--font-sans), sans-serif" }}>
 								Protocol phases will appear here as the demo progresses.
 							</p>
 						</div>
@@ -410,7 +410,7 @@ function Sidebar({
 								) : (
 									<CheckIcon className="w-3 h-3 text-emerald-500/70" />
 								)}
-									<span className={`text-[13px] font-medium ${isLatest ? "text-foreground/65" : "text-foreground/40"} flex-1 text-left`}>
+									<span className={`text-[13px] font-medium ${isLatest ? "text-foreground/80" : "text-foreground/55"} flex-1 text-left`}>
 										{phase.title}
 									</span>
 									{isCollapsedDone && (
@@ -427,7 +427,7 @@ function Sidebar({
 											className="overflow-hidden"
 										>
 										<div className="px-3.5 py-3 space-y-2.5">
-											<div className={`text-[13.5px] leading-[1.75] ${isLatest ? "text-foreground/55" : "text-foreground/40"}`}>
+											<div className={`text-[13.5px] leading-[1.75] ${isLatest ? "text-foreground/70" : "text-foreground/55"}`}>
 												<ReactMarkdown components={mdComponents}>
 													{phase.description}
 												</ReactMarkdown>
@@ -440,7 +440,7 @@ function Sidebar({
 															href={link.href}
 															target="_blank"
 															rel="noopener noreferrer"
-															className="text-[11px] font-mono text-foreground/25 hover:text-foreground/50 underline underline-offset-2 decoration-foreground/10 hover:decoration-foreground/30 transition-colors"
+															className="text-[11px] font-mono text-foreground/40 hover:text-foreground/60 underline underline-offset-2 decoration-foreground/15 hover:decoration-foreground/35 transition-colors"
 														>
 															{link.label}
 														</a>
@@ -449,14 +449,14 @@ function Sidebar({
 											)}
 											{phase.id === "discovery" && !isActive && discoveredProviders.length > 0 && (
 												<div className="space-y-1">
-													<span className="text-[10px] font-mono uppercase tracking-[0.12em] text-foreground/25">
+													<span className="text-[10px] font-mono uppercase tracking-[0.12em] text-foreground/40">
 														Found {discoveredProviders.length} provider{discoveredProviders.length !== 1 ? "s" : ""}
 													</span>
 													{discoveredProviders.map((p) => (
 														<div key={p.url} className="flex items-center gap-2 px-2.5 py-1.5 bg-foreground/3 border border-foreground/5 text-[12px]">
-															<ExternalLinkIcon className="w-3 h-3 text-foreground/25 shrink-0" />
-															<span className="text-foreground/50 font-medium truncate">{p.name}</span>
-															<span className="text-foreground/20 font-mono text-[10px] truncate ml-auto">{p.url.replace(/^https?:\/\//, "")}</span>
+															<ExternalLinkIcon className="w-3 h-3 text-foreground/40 shrink-0" />
+															<span className="text-foreground/65 font-medium truncate">{p.name}</span>
+															<span className="text-foreground/35 font-mono text-[10px] truncate ml-auto">{p.url.replace(/^https?:\/\//, "")}</span>
 														</div>
 													))}
 												</div>
@@ -464,10 +464,10 @@ function Sidebar({
 											{phaseTools.length > 0 && (
 												<div className="space-y-1">
 													<div className="flex items-center gap-2">
-														<span className="text-[10px] font-mono uppercase tracking-[0.12em] text-foreground/25">
+														<span className="text-[10px] font-mono uppercase tracking-[0.12em] text-foreground/40">
 															Tool calls
 														</span>
-														<span className="text-[10px] text-foreground/15 italic">· click to inspect</span>
+														<span className="text-[10px] text-foreground/30 italic">· click to inspect</span>
 													</div>
 													<div className="flex flex-wrap gap-1">
 														{phaseTools.map((tc, j) => {
@@ -482,7 +482,7 @@ function Sidebar({
 																animate={tc.state === "running" ? { opacity: [0.6, 1, 0.6], scale: 1 } : { opacity: 1, scale: 1 }}
 																transition={tc.state === "running" ? { opacity: { duration: 1.8, repeat: Infinity, ease: "easeInOut" }, scale: { duration: 0.2 } } : { duration: 0.2, delay: j * 0.04 }}
 																onClick={() => setSelectedTool(tc)}
-																className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-mono border transition-colors cursor-pointer ${tc.state === "running" ? "border-foreground/10 bg-foreground/3 text-foreground/35 hover:bg-foreground/5 tool-running" : hasErr ? "border-red-500/25 bg-red-500/8 text-red-600 dark:text-red-400 hover:bg-red-500/12" : "border-foreground/6 bg-foreground/3 text-foreground/35 hover:bg-foreground/5 hover:text-foreground/50"}`}
+																className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-mono border transition-colors cursor-pointer ${tc.state === "running" ? "border-foreground/15 bg-foreground/3 text-foreground/50 hover:bg-foreground/5 tool-running" : hasErr ? "border-red-500/25 bg-red-500/8 text-red-600 dark:text-red-400 hover:bg-red-500/12" : "border-foreground/10 bg-foreground/3 text-foreground/50 hover:bg-foreground/5 hover:text-foreground/65"}`}
 															>
 																{tc.state === "running" ? <span className="animate-pulse"><TIcon className="w-2.5 h-2.5" /></span> : hasErr ? <ExclamationTriangleIcon className="w-2.5 h-2.5" /> : <TIcon className="w-2.5 h-2.5" />}
 																{meta.label}
@@ -550,13 +550,13 @@ function ApprovalCard({
 			<div className="px-3 sm:px-4 py-2.5 sm:py-3 space-y-2.5 sm:space-y-3">
 				<div className="flex items-start gap-2.5 sm:gap-3">
 					<div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-foreground/5 flex items-center justify-center shrink-0 mt-0.5">
-						<LockClosedIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-foreground/40" />
+						<LockClosedIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-foreground/55" />
 					</div>
 					<div className="min-w-0">
-						<p className="text-[13px] font-medium text-foreground/70 mb-0.5">
+						<p className="text-[13px] font-medium text-foreground/80 mb-0.5">
 							Approval required
 						</p>
-						<p className="text-[12px] sm:text-[12.5px] text-foreground/40 leading-relaxed">
+						<p className="text-[12px] sm:text-[12.5px] text-foreground/55 leading-relaxed">
 							Sign in and grant the agent access to act on your behalf.
 						</p>
 					</div>
@@ -581,7 +581,7 @@ function ApprovalCard({
 				>
 					<LockClosedIcon className="w-3.5 h-3.5" />
 					Approve Access
-					<ExternalLinkIcon className="w-3 h-3 opacity-50" />
+					<ExternalLinkIcon className="w-3 h-3 opacity-60" />
 				</button>
 			</div>
 		</motion.div>
@@ -600,13 +600,13 @@ function EscalationCard({ dashboardUrl }: { dashboardUrl: string }) {
 			<div className="px-3 sm:px-4 py-2.5 sm:py-3 space-y-2.5 sm:space-y-3">
 				<div className="flex items-start gap-2.5 sm:gap-3">
 					<div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-foreground/5 flex items-center justify-center shrink-0 mt-0.5">
-						<LockClosedIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-foreground/40" />
+						<LockClosedIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-foreground/55" />
 					</div>
 					<div className="min-w-0">
-						<p className="text-[13px] font-medium text-foreground/70 mb-0.5">
+						<p className="text-[13px] font-medium text-foreground/80 mb-0.5">
 							New capability needs approval
 						</p>
-						<p className="text-[12px] sm:text-[12.5px] text-foreground/40 leading-relaxed">
+						<p className="text-[12px] sm:text-[12.5px] text-foreground/55 leading-relaxed">
 							The provider sent a notification to your dashboard. Visit the approvals page to grant the agent this additional permission.
 						</p>
 					</div>
@@ -618,7 +618,7 @@ function EscalationCard({ dashboardUrl }: { dashboardUrl: string }) {
 				>
 					<LockClosedIcon className="w-3.5 h-3.5" />
 					Open Approvals Dashboard
-					<ExternalLinkIcon className="w-3 h-3 opacity-50" />
+					<ExternalLinkIcon className="w-3 h-3 opacity-60" />
 				</button>
 			</div>
 		</motion.div>
@@ -655,7 +655,7 @@ function ChoiceCard({
 		>
 			<div className="px-3 sm:px-4 py-2.5 sm:py-3 space-y-2.5">
 				{message && (
-					<p className="text-[13px] text-foreground/50">{message}</p>
+					<p className="text-[13px] text-foreground/65">{message}</p>
 				)}
 				<div className="flex gap-2">
 					{options.map((opt) => {
@@ -715,9 +715,9 @@ const TOOL_META: Record<string, { label: string; icon: IconComponent }> = {
 
 function ToolCallSummary({ toolName, res }: { toolName: string; res: Record<string, unknown> }) {
 	if (res.status === "pending_approval" || res.error) return null;
-	if (toolName === "search" && Array.isArray(res.results)) return <span className="text-[11px] text-foreground/30 font-mono">{res.results.length} result{res.results.length !== 1 ? "s" : ""}</span>;
-	if (toolName === "connect_agent" && res.agentId) return <span className="text-[11px] text-foreground/30 font-mono truncate max-w-[120px]">{String(res.agentId).slice(0, 8)}…</span>;
-	if (toolName === "agent_status" && res.status) return <span className={`text-[11px] font-mono ${res.status === "active" ? "text-emerald-500" : "text-foreground/30"}`}>{String(res.status)}</span>;
+	if (toolName === "search" && Array.isArray(res.results)) return <span className="text-[11px] text-foreground/45 font-mono">{res.results.length} result{res.results.length !== 1 ? "s" : ""}</span>;
+	if (toolName === "connect_agent" && res.agentId) return <span className="text-[11px] text-foreground/45 font-mono truncate max-w-[120px]">{String(res.agentId).slice(0, 8)}…</span>;
+	if (toolName === "agent_status" && res.status) return <span className={`text-[11px] font-mono ${res.status === "active" ? "text-emerald-500" : "text-foreground/45"}`}>{String(res.status)}</span>;
 	return null;
 }
 
@@ -746,7 +746,7 @@ function ToolCallsAccordion({ toolParts }: { toolParts: ToolPart[] }) {
 	const errorCount = toolParts.filter((p) => getToolState(p) === "error").length;
 	return (
 		<div className="my-1.5">
-			<button type="button" onClick={() => setExpanded(!expanded)} className="inline-flex items-center gap-1.5 text-[11px] font-mono text-foreground/30 hover:text-foreground/50 transition-colors cursor-pointer py-0.5">
+			<button type="button" onClick={() => setExpanded(!expanded)} className="inline-flex items-center gap-1.5 text-[11px] font-mono text-foreground/45 hover:text-foreground/65 transition-colors cursor-pointer py-0.5">
 				<ChevronRightIcon className={`w-2.5 h-2.5 transition-transform ${expanded ? "rotate-90" : ""}`} />
 				<span>{toolParts.length} tool call{toolParts.length !== 1 ? "s" : ""}</span>
 			{runningCount > 0 && <span className="w-2.5 h-2.5 rounded-full bg-foreground/15 tool-running shrink-0" />}
@@ -776,8 +776,8 @@ function ToolDetailRow({ name, label, icon: Icon, state, input, output }: { name
 	return (
 		<div>
 		<button type="button" onClick={() => state !== "running" && setExpanded(!expanded)} className={`w-full flex items-center gap-2 px-2.5 py-1.5 text-left hover:bg-foreground/2 transition-colors ${state === "running" ? "cursor-default tool-running" : "cursor-pointer"}`}>
-			{state === "running" ? <Icon className="w-3 h-3 text-foreground/25 shrink-0" /> : hasError ? <ExclamationTriangleIcon className="w-3 h-3 text-red-600 dark:text-red-400 shrink-0" /> : <Icon className="w-3 h-3 text-foreground/20 shrink-0" />}
-				<span className="text-foreground/40 flex-1">{label}</span>
+			{state === "running" ? <Icon className="w-3 h-3 text-foreground/40 shrink-0" /> : hasError ? <ExclamationTriangleIcon className="w-3 h-3 text-red-600 dark:text-red-400 shrink-0" /> : <Icon className="w-3 h-3 text-foreground/35 shrink-0" />}
+				<span className="text-foreground/55 flex-1">{label}</span>
 				{state === "done" && !hasError && <CheckIcon className="w-2.5 h-2.5 text-emerald-500/60" />}
 				{state === "done" && res && !hasError && <ToolCallSummary toolName={name} res={res} />}
 				{state !== "running" && <ChevronRightIcon className={`w-2.5 h-2.5 text-foreground/15 transition-transform ${expanded ? "rotate-90" : ""}`} />}
@@ -786,8 +786,8 @@ function ToolDetailRow({ name, label, icon: Icon, state, input, output }: { name
 				{expanded && (
 					<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.12 }} className="overflow-hidden">
 						<div className="px-2.5 pb-2 space-y-1.5 border-t border-foreground/4 pt-1.5">
-							{input != null && <div><span className="text-[9px] uppercase tracking-[0.12em] text-foreground/25 block mb-0.5">Input</span><pre className="text-foreground/35 whitespace-pre-wrap break-all leading-relaxed max-h-[100px] overflow-y-auto no-scrollbar">{formatJson(input)}</pre></div>}
-							{output != null && <div><span className="text-[9px] uppercase tracking-[0.12em] text-foreground/25 block mb-0.5">Output</span><pre className="text-foreground/35 whitespace-pre-wrap break-all leading-relaxed max-h-[150px] overflow-y-auto no-scrollbar">{formatJson(output)}</pre></div>}
+							{input != null && <div><span className="text-[9px] uppercase tracking-[0.12em] text-foreground/40 block mb-0.5">Input</span><pre className="text-foreground/50 whitespace-pre-wrap break-all leading-relaxed max-h-[100px] overflow-y-auto no-scrollbar">{formatJson(input)}</pre></div>}
+							{output != null && <div><span className="text-[9px] uppercase tracking-[0.12em] text-foreground/40 block mb-0.5">Output</span><pre className="text-foreground/50 whitespace-pre-wrap break-all leading-relaxed max-h-[150px] overflow-y-auto no-scrollbar">{formatJson(output)}</pre></div>}
 						</div>
 					</motion.div>
 				)}
@@ -820,10 +820,10 @@ function InlineToolPills({ toolParts }: { toolParts: ToolPart[] }) {
 					initial={{ opacity: 0, scale: 0.9, y: 4 }}
 					animate={g.state === "running" ? { opacity: [0.6, 1, 0.6], scale: 1, y: 0 } : { opacity: 1, scale: 1, y: 0 }}
 					transition={g.state === "running" ? { opacity: { duration: 1.8, repeat: Infinity, ease: "easeInOut" }, scale: { duration: 0.25 }, y: { duration: 0.25, delay: i * 0.05 } } : { duration: 0.25, delay: i * 0.05 }}
-					className={`inline-flex items-center gap-1 px-2 py-0.5 border text-[11px] font-mono ${g.state === "running" ? "border-foreground/10 bg-foreground/2 text-foreground/35 tool-running" : hasError ? "border-red-500/25 bg-red-500/8 text-red-600 dark:text-red-400" : "border-foreground/6 text-foreground/30"}`}
+					className={`inline-flex items-center gap-1 px-2 py-0.5 border text-[11px] font-mono ${g.state === "running" ? "border-foreground/15 bg-foreground/2 text-foreground/50 tool-running" : hasError ? "border-red-500/25 bg-red-500/8 text-red-600 dark:text-red-400" : "border-foreground/10 text-foreground/45"}`}
 				>
 					{g.state === "running" ? <span className="animate-pulse"><Icon className="w-2.5 h-2.5" /></span> : hasError ? <ExclamationTriangleIcon className="w-2.5 h-2.5" /> : <Icon className="w-2.5 h-2.5" />}
-						{meta.label}{g.count > 1 && <span className="text-foreground/20">×{g.count}</span>}
+						{meta.label}{g.count > 1 && <span className="text-foreground/35">×{g.count}</span>}
 						{g.state === "done" && <CheckIcon className="w-2 h-2 text-emerald-500/70" />}
 					</motion.span>
 				);
@@ -1482,7 +1482,7 @@ function TryWithToolsDialog({ onClose }: { onClose: () => void }) {
 				animate={{ opacity: 1, y: 0, scale: 1 }}
 				transition={{ duration: 0.2 }}
 				className="relative w-full sm:max-w-lg border border-foreground/10 bg-background shadow-xl shadow-foreground/5 z-10 max-h-[85dvh] overflow-y-auto"
-			style={{ fontFamily: "var(--font-content), Georgia, serif" }}
+			style={{ fontFamily: "var(--font-sans), sans-serif" }}
 			>
 				<div className="px-5 sm:px-6 pt-5 sm:pt-6 pb-4 sm:pb-5 space-y-3.5 sm:space-y-4">
 					<div className="flex items-center gap-3">
@@ -1490,7 +1490,7 @@ function TryWithToolsDialog({ onClose }: { onClose: () => void }) {
 							<LightningBoltIcon className="w-4 h-4 text-foreground/50" />
 						</div>
 						<div className="flex-1 min-w-0">
-							<h2 className="text-[17px] sm:text-[18px] font-semibold tracking-[-0.01em]" style={{ fontFamily: "var(--font-display), serif" }}>
+							<h2 className="text-[17px] sm:text-[18px] font-semibold tracking-[-0.01em]" style={{ fontFamily: "var(--font-sans), sans-serif" }}>
 								Try with your tools
 							</h2>
 						</div>
@@ -1865,17 +1865,17 @@ export function InteractiveDemo() {
 
 			<div className="mb-2 sm:mb-4 shrink-0 flex items-start justify-between gap-4">
 				<div>
-					<h1 className="text-lg sm:text-2xl tracking-[-0.02em] font-semibold" style={{ fontFamily: "var(--font-display), serif" }}>
+					<h1 className="text-lg sm:text-2xl tracking-[-0.02em] font-semibold" style={{ fontFamily: "var(--font-sans), sans-serif" }}>
 						Try Agent Auth
 					</h1>
-					<p className="text-[13px] sm:text-[14px] text-foreground/40 mt-1" style={{ fontFamily: "var(--font-content), Georgia, serif" }}>
+					<p className="text-[13px] sm:text-[14px] text-foreground/55 mt-1" style={{ fontFamily: "var(--font-sans), sans-serif" }}>
 						Chat with an AI agent that discovers services, authenticates, and acts on your behalf.
 					</p>
 				</div>
 				<button
 					type="button"
 					onClick={() => setShowToolsDialog(true)}
-					className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 text-[12px] font-medium text-foreground/50 hover:text-foreground/80 border border-dashed border-foreground/15 hover:border-foreground/25 hover:bg-foreground/3 transition-all cursor-pointer shrink-0 mt-0.5"
+					className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 text-[12px] font-medium text-foreground/60 hover:text-foreground/80 border border-dashed border-foreground/20 hover:border-foreground/30 hover:bg-foreground/3 transition-all cursor-pointer shrink-0 mt-0.5"
 				>
 					<span className="flex items-center -space-x-1.5">
 						<span className="w-4.5 h-4.5 rounded-full bg-background border border-foreground/10 flex items-center justify-center relative z-[4]"><OpenAIIcon className="w-2.5 h-2.5 text-foreground/70" /></span>
@@ -1893,13 +1893,13 @@ export function InteractiveDemo() {
 					{messages.length === 0 ? (
 						<div className="flex-1 flex flex-col items-center justify-center px-3 sm:px-5 gap-4 sm:gap-5">
 							<div className="flex flex-col items-center gap-2.5 sm:gap-3">
-								<div className="flex items-center justify-center gap-3 text-foreground opacity-20">
+								<div className="flex items-center justify-center gap-3 text-foreground opacity-40">
 									<LockClosedIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
 									<LightningBoltIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
 									<EnvelopeClosedIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
 								</div>
-								<p className="text-[13px] sm:text-[14px] text-foreground/30 text-center max-w-xs leading-relaxed px-2" style={{ fontFamily: "var(--font-content), Georgia, serif" }}>
-									A chatbot integrated with the Agent Auth SDK — authenticate, authorize, and act on behalf of users. Press <strong className="text-foreground/50">Send</strong> to start.
+								<p className="text-[13px] sm:text-[14px] text-foreground/50 text-center max-w-xs leading-relaxed px-2" style={{ fontFamily: "var(--font-sans), sans-serif" }}>
+									A chatbot integrated with the Agent Auth SDK — authenticate, authorize, and act on behalf of users. Press <strong className="text-foreground/70">Send</strong> to start.
 								</p>
 							</div>
 							<form onSubmit={onSubmit} className="w-full max-w-lg border border-foreground/12 shadow-[0_4px_24px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.4),0_1px_4px_rgba(0,0,0,0.3)] bg-background px-3 sm:px-4 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3">
@@ -1907,9 +1907,9 @@ export function InteractiveDemo() {
 									value={input}
 									onChange={(e) => setInput(e.target.value)}
 									placeholder="Type a prompt…"
-									className="flex-1 bg-transparent text-[13px] sm:text-[14px] outline-none placeholder:text-foreground/25 text-foreground/80 min-w-0"
+									className="flex-1 bg-transparent text-[13px] sm:text-[14px] outline-none placeholder:text-foreground/40 text-foreground/80 min-w-0"
 								/>
-								<button type="submit" disabled={!input.trim()} className="p-1.5 sm:p-2 bg-primary text-primary-foreground rounded-sm disabled:opacity-30 disabled:cursor-not-allowed hover:bg-primary/90 transition-colors cursor-pointer shrink-0">
+								<button type="submit" disabled={!input.trim()} className="p-1.5 sm:p-2 bg-primary text-primary-foreground rounded-sm disabled:opacity-40 disabled:cursor-not-allowed hover:bg-primary/90 transition-colors cursor-pointer shrink-0">
 									<PaperPlaneIcon className="w-4 h-4" />
 								</button>
 							</form>
@@ -1952,19 +1952,19 @@ export function InteractiveDemo() {
 									onClick={sendSuggestion}
 									className="w-full text-left px-3 sm:px-5 py-2.5 flex items-center gap-2 sm:gap-2.5 border-b border-foreground/10 bg-foreground/[0.02] hover:bg-foreground/[0.04] transition-colors cursor-pointer group"
 								>
-									<LightningBoltIcon className="w-3.5 h-3.5 text-foreground/40 group-hover:text-foreground/60 shrink-0 transition-colors" />
-									<span className="text-[12px] sm:text-[13px] text-foreground/55 group-hover:text-foreground/75 truncate transition-colors">
+									<LightningBoltIcon className="w-3.5 h-3.5 text-foreground/50 group-hover:text-foreground/70 shrink-0 transition-colors" />
+									<span className="text-[12px] sm:text-[13px] text-foreground/65 group-hover:text-foreground/80 truncate transition-colors">
 										{currentPrompt}
 									</span>
-									<ArrowRightIcon className="w-3.5 h-3.5 text-foreground/25 group-hover:text-foreground/50 shrink-0 ml-auto transition-colors" />
+									<ArrowRightIcon className="w-3.5 h-3.5 text-foreground/35 group-hover:text-foreground/60 shrink-0 ml-auto transition-colors" />
 								</button>
 								)}
 								<form onSubmit={onSubmit} className="px-3 sm:px-5 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3">
 									{isStreaming ? (
 										<>
 										<div className="flex-1 flex items-center gap-2 min-w-0 tool-running">
-											<span className="w-3.5 h-3.5 rounded-full bg-foreground/15 tool-running shrink-0" />
-											<span className="text-[13px] sm:text-[14px] text-foreground/30 truncate">Agent is working…</span>
+											<span className="w-3.5 h-3.5 rounded-full bg-foreground/25 tool-running shrink-0" />
+											<span className="text-[13px] sm:text-[14px] text-foreground/45 truncate">Agent is working…</span>
 										</div>
 											<button type="button" onClick={stop} className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-[12px] font-mono text-foreground/50 hover:text-foreground/80 border border-foreground/10 hover:border-foreground/20 transition-colors cursor-pointer shrink-0">
 												<StopIcon className="w-2.5 h-2.5 fill-current" />Stop
@@ -1973,8 +1973,8 @@ export function InteractiveDemo() {
 									) : awaitingApproval ? (
 										<>
 										<div className="flex-1 flex items-center gap-2 min-w-0 tool-running">
-											<LockClosedIcon className="w-3.5 h-3.5 text-foreground/25 shrink-0" />
-											<span className="text-[13px] sm:text-[14px] text-foreground/30 truncate">Waiting for approval…</span>
+											<LockClosedIcon className="w-3.5 h-3.5 text-foreground/40 shrink-0" />
+											<span className="text-[13px] sm:text-[14px] text-foreground/45 truncate">Waiting for approval…</span>
 										</div>
 											<button type="button" onClick={cancelPolling} className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-[12px] font-mono text-foreground/50 hover:text-foreground/80 border border-foreground/10 hover:border-foreground/20 transition-colors cursor-pointer shrink-0">
 												<Cross2Icon className="w-2.5 h-2.5" />Cancel
@@ -1986,9 +1986,9 @@ export function InteractiveDemo() {
 												value={input}
 												onChange={(e) => setInput(e.target.value)}
 												placeholder={isComplete ? "Ask Anything..." : "Type something else…"}
-												className="flex-1 bg-transparent text-[13px] sm:text-[14px] outline-none placeholder:text-foreground/25 text-foreground/80 min-w-0"
+												className="flex-1 bg-transparent text-[13px] sm:text-[14px] outline-none placeholder:text-foreground/40 text-foreground/80 min-w-0"
 											/>
-											<button type="submit" disabled={!input.trim()} className="p-1.5 sm:p-2 text-foreground/30 hover:text-foreground/60 disabled:opacity-20 disabled:cursor-not-allowed transition-colors cursor-pointer shrink-0">
+											<button type="submit" disabled={!input.trim()} className="p-1.5 sm:p-2 text-foreground/45 hover:text-foreground/70 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer shrink-0">
 												<PaperPlaneIcon className="w-4 h-4" />
 											</button>
 										</>

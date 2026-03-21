@@ -5,8 +5,8 @@ import { motion } from "motion/react";
 function AgentIcon({ variant }: { variant: "red" | "green" }) {
 	const color =
 		variant === "red"
-			? "text-red-400/75 dark:text-red-400/55"
-			: "text-emerald-400/60 dark:text-emerald-400/40";
+			? "text-red-400/85 dark:text-red-400/70"
+			: "text-emerald-400/75 dark:text-emerald-400/60";
 	return (
 		<svg
 			className={`w-3.5 h-3.5 ${color}`}
@@ -27,7 +27,7 @@ function AgentIcon({ variant }: { variant: "red" | "green" }) {
 function FlowArrow() {
 	return (
 		<svg
-			className="w-5 h-5 shrink-0 text-foreground/20 dark:text-foreground/12"
+			className="w-5 h-5 shrink-0 text-foreground/35 dark:text-foreground/25"
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke="currentColor"
@@ -46,7 +46,7 @@ function ServerNode({ label }: { label: string }) {
 		<div className="flex flex-col items-center gap-1.5">
 			<div className="relative w-10 h-10 flex items-center justify-center">
 				<svg
-					className="absolute inset-0 w-full h-full text-foreground/30 dark:text-foreground/15"
+					className="absolute inset-0 w-full h-full text-foreground/45 dark:text-foreground/30"
 					viewBox="0 0 40 40"
 				>
 					<rect x="1" y="1" width="38" height="38" rx="2" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -57,7 +57,7 @@ function ServerNode({ label }: { label: string }) {
 					<circle cx="8" cy="34" r="1.5" fill="currentColor" opacity="0.6" />
 				</svg>
 			</div>
-			<span className="text-[9px] font-mono text-foreground/55 dark:text-foreground/45 tracking-wider uppercase">
+			<span className="text-[9px] font-mono text-foreground/70 dark:text-foreground/60 tracking-wider uppercase">
 				{label}
 			</span>
 		</div>
@@ -67,10 +67,10 @@ function ServerNode({ label }: { label: string }) {
 function SectionTag({ label }: { label: string }) {
 	return (
 		<div className="flex items-center gap-3 mb-6">
-			<span className="inline-flex items-center border border-foreground/10 dark:border-foreground/7 bg-foreground/3 dark:bg-foreground/2 px-3 py-1 text-[10px] sm:text-[11px] font-mono tracking-[0.14em] uppercase text-foreground/70 dark:text-foreground/55">
+			<span className="inline-flex items-center border border-foreground/15 dark:border-foreground/12 bg-foreground/4 dark:bg-foreground/3 px-3 py-1 text-[10px] sm:text-[11px] font-mono tracking-[0.14em] uppercase text-foreground/75 dark:text-foreground/65">
 				{label}
 			</span>
-			<div className="h-px flex-1 bg-linear-to-r from-foreground/10 dark:from-foreground/7 to-transparent" />
+			<div className="h-px flex-1 bg-linear-to-r from-foreground/15 dark:from-foreground/12 to-transparent" />
 		</div>
 	);
 }
@@ -97,23 +97,23 @@ export function ProtocolOverview() {
 
 			{/* Delegated — diagram */}
 			<div className="mb-12">
-				<div className="border border-foreground/10 dark:border-foreground/7 overflow-hidden grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr]">
+				<div className="border border-foreground/15 dark:border-foreground/12 overflow-hidden grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr]">
 					{/* Today */}
-					<div className="bg-red-400/5 p-5 sm:p-6">
-						<div className="text-[11px] font-mono uppercase tracking-wider text-red-500 dark:text-red-400/70 mb-4">Today</div>
+					<div className="bg-red-400/5 dark:bg-red-400/[0.04] p-5 sm:p-6">
+						<div className="text-[11px] font-mono uppercase tracking-wider text-red-500 dark:text-red-400/85 mb-4">Today</div>
 						<div className="flex items-center justify-center gap-3 sm:gap-4">
-							<div className="border border-dashed border-red-400/25 dark:border-red-400/18 p-2.5 shrink-0">
-								<div className="text-[8px] font-mono uppercase tracking-[0.12em] text-red-400/65 dark:text-red-400/50 mb-2 text-center">
+							<div className="border border-dashed border-red-400/35 dark:border-red-400/28 p-2.5 shrink-0">
+								<div className="text-[8px] font-mono uppercase tracking-[0.12em] text-red-400/80 dark:text-red-400/65 mb-2 text-center">
 									token: s_123
 								</div>
 								<div className="flex flex-col gap-1">
 									{["agent_1", "agent_2", "agent_3"].map((id) => (
 										<div
 											key={id}
-											className="flex items-center gap-1.5 px-2 py-1 border border-red-400/30 dark:border-red-400/22 bg-red-400/8 dark:bg-red-400/6"
+											className="flex items-center gap-1.5 px-2 py-1 border border-red-400/40 dark:border-red-400/30 bg-red-400/10 dark:bg-red-400/8"
 										>
 											<AgentIcon variant="red" />
-											<span className="text-[10px] font-mono text-red-400/80 dark:text-red-400/60">{id}</span>
+											<span className="text-[10px] font-mono text-red-400/90 dark:text-red-400/75">{id}</span>
 										</div>
 									))}
 								</div>
@@ -121,18 +121,18 @@ export function ProtocolOverview() {
 							<FlowArrow />
 							<ServerNode label="Server" />
 						</div>
-						<p className="text-[11px] text-red-400/65 dark:text-red-400/50 leading-relaxed mt-4">
+						<p className="text-[11px] text-red-400/80 dark:text-red-400/65 leading-relaxed mt-4">
 							All agents share one token. The server sees the user, not the agent.
 						</p>
 					</div>
 
 					{/* Divider */}
-					<div className="hidden sm:block w-px bg-foreground/10 dark:bg-foreground/7" />
-					<div className="sm:hidden h-px bg-foreground/10 dark:bg-foreground/7" />
+					<div className="hidden sm:block w-px bg-foreground/15 dark:bg-foreground/12" />
+					<div className="sm:hidden h-px bg-foreground/15 dark:bg-foreground/12" />
 
 					{/* With Agent Auth */}
-					<div className="bg-emerald-400/3 p-5 sm:p-6">
-						<div className="text-[11px] font-mono uppercase tracking-wider text-emerald-600/70 dark:text-emerald-400/50 mb-4">With Agent Auth</div>
+					<div className="bg-emerald-400/[0.04] dark:bg-emerald-400/[0.03] p-5 sm:p-6">
+						<div className="text-[11px] font-mono uppercase tracking-wider text-emerald-600/85 dark:text-emerald-400/70 mb-4">With Agent Auth</div>
 						<div className="flex items-center justify-center gap-3 sm:gap-4">
 							<div className="flex flex-col gap-1.5 shrink-0">
 								{[
@@ -142,16 +142,16 @@ export function ProtocolOverview() {
 								].map((row) => (
 									<div
 										key={row.id}
-										className="flex items-center gap-2 px-2 py-1 bg-emerald-400/6 dark:bg-emerald-400/4 border border-emerald-400/15 dark:border-emerald-400/10"
+										className="flex items-center gap-2 px-2 py-1 bg-emerald-400/8 dark:bg-emerald-400/6 border border-emerald-400/25 dark:border-emerald-400/18"
 									>
 										<AgentIcon variant="green" />
-										<span className="text-[10px] font-mono text-foreground/65 dark:text-foreground/50">
+										<span className="text-[10px] font-mono text-foreground/75 dark:text-foreground/65">
 											{row.id}
 										</span>
-										<span className="text-[9px] font-mono text-emerald-600/50 dark:text-emerald-400/35">
+										<span className="text-[9px] font-mono text-emerald-600/65 dark:text-emerald-400/50">
 											{row.cap}
 										</span>
-										<span className="text-[8px] font-mono text-foreground/30 dark:text-foreground/20">
+										<span className="text-[8px] font-mono text-foreground/45 dark:text-foreground/35">
 											{row.constraint}
 										</span>
 									</div>
@@ -160,7 +160,7 @@ export function ProtocolOverview() {
 							<FlowArrow />
 							<ServerNode label="Server" />
 						</div>
-						<p className="text-[11px] text-emerald-600/50 dark:text-emerald-400/35 leading-relaxed mt-4">
+						<p className="text-[11px] text-emerald-600/65 dark:text-emerald-400/50 leading-relaxed mt-4">
 							Each agent has its own identity with scoped capabilities and constraints. Every request traces back to a specific agent.
 						</p>
 					</div>
@@ -261,8 +261,8 @@ export function ProtocolOverview() {
 			{/*  GET STARTED                                    */}
 			{/* ═══════════════════════════════════════════════ */}
 
-			<div className="mt-20 border border-foreground/10 dark:border-foreground/7">
-				<div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-foreground/10 dark:bg-foreground/7">
+			<div className="mt-20 border border-foreground/15 dark:border-foreground/12">
+				<div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-foreground/15 dark:bg-foreground/12">
 					{[
 						{
 							label: "Docs",
@@ -289,12 +289,12 @@ export function ProtocolOverview() {
 							className="bg-background p-5 sm:p-6 flex flex-col gap-2 group transition-colors hover:bg-foreground/3 dark:hover:bg-foreground/2"
 						>
 							<div className="flex items-center gap-2">
-								<item.icon className="w-3.5 h-3.5 text-foreground/30 dark:text-foreground/20" />
-								<span className="text-[10px] font-mono uppercase tracking-widest text-foreground/30 dark:text-foreground/20">
+								<item.icon className="w-3.5 h-3.5 text-foreground/45 dark:text-foreground/35" />
+								<span className="text-[10px] font-mono uppercase tracking-widest text-foreground/45 dark:text-foreground/35">
 									{item.label}
 								</span>
 							</div>
-							<span className="text-sm font-medium text-foreground/70 dark:text-foreground/55 group-hover:text-foreground transition-colors">
+							<span className="text-sm font-medium text-foreground/75 dark:text-foreground/65 group-hover:text-foreground transition-colors">
 								{item.title}
 							</span>
 						</a>
